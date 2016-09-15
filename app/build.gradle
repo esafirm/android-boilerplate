@@ -9,7 +9,7 @@ apply from: 'versioning.gradle'
 
 android {
   compileSdkVersion 24
-  buildToolsVersion '24'
+  buildToolsVersion '24.0.2'
 
   defaultConfig {
     applicationId 'uk.co.ribot.androidboilerplate'
@@ -85,8 +85,8 @@ play {
 }
 
 dependencies {
-  final PLAY_SERVICES_VERSION = '9.2.1'
-  final SUPPORT_LIBRARY_VERSION = '24.1.1'
+  final PLAY_SERVICES_VERSION = '9.4.0'
+  final SUPPORT_LIBRARY_VERSION = '24.2.0'
   final RETROFIT_VERSION = '2.1.0'
   final DAGGER_VERSION = '2.5'
   final DEXMAKER_VERSION = '1.4'
@@ -101,7 +101,11 @@ dependencies {
   def jUnit = "junit:junit:4.12"
   def mockito = "org.mockito:mockito-core:1.10.19"
 
-  // App Dependencies
+  /* --------------------------------------------------- */
+  /* > Library Declarations */
+  /* --------------------------------------------------- */
+
+  /* App Dependencies */
   compile "com.google.android.gms:play-services-gcm:$PLAY_SERVICES_VERSION"
   compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
   compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
@@ -116,15 +120,27 @@ dependencies {
   compile "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
 
   compile 'com.github.orhanobut:hawk:1.23'
-  compile 'com.github.esafirm:androidcommon:0.2.6'
   compile 'com.github.bumptech.glide:glide:3.7.0'
-  compile 'io.reactivex:rxandroid:1.2.1'
-  compile 'io.reactivex:rxjava:1.1.6'
   compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
     transitive = true;
   }
 
-  compile 'com.jakewharton.timber:timber:4.1.2'
+  /* RxJava */
+  compile 'io.reactivex:rxandroid:1.2.1'
+  compile 'io.reactivex:rxjava:1.1.10'
+
+  /* Common & Utility */
+  compile 'com.jakewharton.timber:timber:4.3.0'
+  compile 'com.github.esafirm.androidcommon:app:0.3.2'
+
+  /* Dagger */
+  compile "com.google.dagger:dagger:$DAGGER_VERSION"
+  provided 'org.glassfish:javax.annotation:10.0-b28'
+  apt daggerCompiler
+  testApt daggerCompiler
+  androidTestApt daggerCompiler
+
+  /* Views Binder */
   compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
   apt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
@@ -136,13 +152,10 @@ dependencies {
   apt 'com.ryanharter.auto.value:auto-value-gson:0.3.2-rc1'
   apt 'com.squareup:javapoet:1.7.0' // https://github.com/rharter/auto-value-parcel/issues/64
 
-  compile "com.google.dagger:dagger:$DAGGER_VERSION"
-  provided 'org.glassfish:javax.annotation:10.0-b28' //Required by Dagger2
-  apt daggerCompiler
-  testApt daggerCompiler
-  androidTestApt daggerCompiler
+  /* --------------------------------------------------- */
+  /* > Testing */
+  /* --------------------------------------------------- */
 
-  // Instrumentation test dependencies
   androidTestCompile jUnit
   androidTestCompile mockito
   androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
@@ -158,7 +171,7 @@ dependencies {
   androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:$DEXMAKER_VERSION"
   androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
 
-  // Unit tests dependencies
+  /* Unit Test */
   testCompile jUnit
   testCompile mockito
   testCompile "org.hamcrest:hamcrest-core:$HAMCREST_VERSION"
