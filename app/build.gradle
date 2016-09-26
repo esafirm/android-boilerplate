@@ -85,8 +85,8 @@ play {
 }
 
 dependencies {
-  final PLAY_SERVICES_VERSION = '9.4.0'
-  final SUPPORT_LIBRARY_VERSION = '24.2.0'
+  final PLAY_SERVICES_VERSION = '9.6.1'
+  final SUPPORT_LIBRARY_VERSION = '24.2.1'
   final RETROFIT_VERSION = '2.1.0'
   final DAGGER_VERSION = '2.5'
   final DEXMAKER_VERSION = '1.4'
@@ -131,7 +131,7 @@ dependencies {
 
   /* Common & Utility */
   compile 'com.jakewharton.timber:timber:4.3.0'
-  compile 'com.github.esafirm.androidcommon:app:0.3.2'
+  compile 'com.github.esafirm.androidcommon:app:0.4.0'
 
   /* Dagger */
   compile "com.google.dagger:dagger:$DAGGER_VERSION"

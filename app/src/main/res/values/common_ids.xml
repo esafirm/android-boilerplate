@@ -9,7 +9,6 @@
   <item name="toolbar" type="id"/>
 
   <!--General-->
-  <item name="revealView" type="id"/>
   <item name="cardView" type="id"/>
 
   <!--Switch-->
@@ -22,83 +21,72 @@
   <item name="swipeRefreshView" type="id"/>
 
   <!--Layout-->
-  <item name="lyTop" type="id"/>
-  <item name="lyMiddle" type="id"/>
-  <item name="lyBottom" type="id"/>
+  <item name="layout_top" type="id"/>
+  <item name="layout_middle" type="id"/>
+  <item name="layout_bottom" type="id"/>
 
   <!--TextView-->
-  <item name="txtTitle" type="id"/>
-  <item name="txtSubTitle" type="id"/>
-  <item name="txtDesc" type="id"/>
-  <item name="txtTotalClient" type="id"/>
-  <item name="txtTotalPemasukan" type="id"/>
-  <item name="txtName" type="id"/>
-  <item name="txtEmail" type="id"/>
-  <item name="txtPhoneMobile" type="id"/>
-  <item name="txtPhone" type="id"/>
-  <item name="txtArea" type="id"/>
-  <item name="txtContent" type="id"/>
-  <item name="txtCaption" type="id"/>
-  <item name="txtDate" type="id"/>
-  <item name="txtTime" type="id"/>
-  <item name="txtAmount" type="id"/>
-  <item name="txtComplete" type="id"/>
-  <item name="txtNoData" type="id"/>
-  <item name="txtTags" type="id"/>
-  <item name="txtDistance" type="id"/>
-  <item name="txtSkip" type="id"/>
-  <item name="txtLabel" type="id"/>
-  <item name="txtAddress" type="id"/>
-  <item name="txtRegister" type="id"/>
+  <item name="text_title" type="id"/>
+  <item name="text_subtitle" type="id"/>
+  <item name="text_desc" type="id"/>
+  <item name="text_name" type="id"/>
+  <item name="text_emai" type="id"/>
+  <item name="text_phone_mobile" type="id"/>
+  <item name="text_phone" type="id"/>
+  <item name="text_area" type="id"/>
+  <item name="text_content" type="id"/>
+  <item name="text_caption" type="id"/>
+  <item name="text_date" type="id"/>
+  <item name="text_time" type="id"/>
+  <item name="text_amount" type="id"/>
+  <item name="text_no_data" type="id"/>
+  <item name="text_tag" type="id"/>
+  <item name="text_label" type="id"/>
+  <item name="text_address" type="id"/>
 
   <!--EditText-->
-  <item name="inpContent" type="id"/>
-  <item name="inpUsername" type="id"/>
-  <item name="inpPassword" type="id"/>
-  <item name="inpConfirmPassword" type="id"/>
-  <item name="inpSearch" type="id"/>
-  <item name="inpTitle" type="id"/>
-  <item name="inpComment" type="id"/>
-  <item name="inpPlace" type="id"/>
-  <item name="inpPhone" type="id"/>
-  <item name="inpEmail" type="id"/>
-  <item name="inpName" type="id"/>
+  <item name="input_content" type="id"/>
+  <item name="input_username" type="id"/>
+  <item name="input_password" type="id"/>
+  <item name="input_confirm_password" type="id"/>
+  <item name="input_search" type="id"/>
+  <item name="input_title" type="id"/>
+  <item name="input_comment" type="id"/>
+  <item name="input_phone" type="id"/>
+  <item name="input_email" type="id"/>
+  <item name="input_name" type="id"/>
 
   <!--Button-->
-  <item name="btnShare" type="id"/>
-  <item name="btnLike" type="id"/>
-  <item name="btnMember" type="id"/>
-  <item name="btnComment" type="id"/>
-  <item name="btnLeave" type="id"/>
-  <item name="btnSubmit" type="id"/>
-  <item name="btnDone" type="id"/>
-  <item name="btnRandom" type="id"/>
-  <item name="btnClear" type="id"/>
-  <item name="btnMore" type="id"/>
-  <item name="btnCamera" type="id"/>
-  <item name="btnExpand" type="id"/>
-  <item name="btnSearch" type="id"/>
-  <item name="btnSetting" type="id"/>
-  <item name="btnInfo" type="id"/>
+  <item name="btn_share" type="id"/>
+  <item name="btn_like" type="id"/>
+  <item name="btn_comment" type="id"/>
+  <item name="btn_submit" type="id"/>
+  <item name="btn_done" type="id"/>
+  <item name="btn_clear" type="id"/>
+  <item name="btn_more" type="id"/>
+  <item name="btn_camera" type="id"/>
+  <item name="btn_search" type="id"/>
+  <item name="btn_setting" type="id"/>
+  <item name="btn_info" type="id"/>
 
   <!--Floating Button-->
   <item name="fab" type="id"/>
 
   <!--VideoView-->
-  <item name="videoView" type="id"/>
+  <item name="video_view" type="id"/>
 
   <!--Progressbar-->
-  <item name="pbLoad" type="id"/>
-  <item name="pbLoadMore" type="id"/>
-  <item name="pbSeekBar" type="id"/>
+  <item name="pb" type="id"/>
+  <item name="pb_load_more" type="id"/>
+  <item name="pb_seekbar" type="id"/>
 
   <!--ImageView-->
-  <item name="imgHeader" type="id"/>
-  <item name="imgContent" type="id"/>
-  <item name="imgIndicator" type="id"/>
-  <item name="imgAvatar" type="id"/>
-  <item name="imgLabel" type="id"/>
-  <item name="imgBottom" type="id"/>
+  <item name="img_header" type="id"/>
+  <item name="img_content" type="id"/>
+  <item name="img_indicator" type="id"/>
+  <item name="img_avatar" type="id"/>
+  <item name="img_label" type="id"/>
+  <item name="img_bottom" type="id"/>
 
   <!--ListView-->
   <item name="listView" type="id"/>
