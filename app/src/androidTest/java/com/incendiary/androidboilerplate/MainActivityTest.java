@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
           // Override the default intent so we pass a false flag for syncing so it doesn't
           // start a sync service in the background that would affect  the behaviour of
           // this test.
-          return MainActivity.getStartIntent(InstrumentationRegistry.getTargetContext(), false);
+          return MainActivity.Companion.getStartIntent(InstrumentationRegistry.getTargetContext(), false);
         }
       };
 

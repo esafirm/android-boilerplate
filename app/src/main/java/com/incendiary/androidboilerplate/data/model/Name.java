@@ -1,19 +1,48 @@
 package com.incendiary.androidboilerplate.data.model;
 
+import android.os.Parcel;
 import android.os.Parcelable;
-import com.google.auto.value.AutoValue;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.SerializedName;
 
-@AutoValue public abstract class Name implements Parcelable {
-  public abstract String first();
-  public abstract String last();
+public class Name implements Parcelable {
 
-  public static Name create(String first, String last) {
-    return new AutoValue_Name(first, last);
+  @SerializedName("first") private String first;
+  @SerializedName("last") private String last;
+
+  public String getFirst() {
+    return first;
   }
 
-  public static TypeAdapter<Name> typeAdapter(Gson gson) {
-    return new AutoValue_Name.GsonTypeAdapter(gson);
+  public String getLast() {
+    return last;
   }
+
+  public Name(String first, String last) {
+    this.first = first;
+    this.last = last;
+  }
+
+  /* --------------------------------------------------- */
+  /* > Parcelable */
+  /* --------------------------------------------------- */
+
+  @Override public int describeContents() { return 0; }
+
+  @Override public void writeToParcel(Parcel dest, int flags) {
+    dest.writeString(this.first);
+    dest.writeString(this.last);
+  }
+
+  public Name() {}
+
+  protected Name(Parcel in) {
+    this.first = in.readString();
+    this.last = in.readString();
+  }
+
+  public static final Creator<Name> CREATOR = new Creator<Name>() {
+    @Override public Name createFromParcel(Parcel source) {return new Name(source);}
+
+    @Override public Name[] newArray(int size) {return new Name[size];}
+  };
 }

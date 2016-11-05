@@ -26,20 +26,20 @@ public class SyncService extends Service {
   }
 
   public static boolean isRunning(Context context) {
-    return AndroidComponentUtil.isServiceRunning(context, SyncService.class);
+    return AndroidComponentUtil.INSTANCE.isServiceRunning(context, SyncService.class);
   }
 
   @Override public void onCreate() {
     super.onCreate();
-    BoilerplateApplication.component().inject(this);
+    BoilerplateApplication.Companion.component().inject(this);
   }
 
   @Override public int onStartCommand(Intent intent, int flags, final int startId) {
     Timber.i("Starting sync...");
 
-    if (!NetworkUtil.isNetworkConnected(this)) {
+    if (!NetworkUtil.INSTANCE.isNetworkConnected(this)) {
       Timber.i("Sync canceled, connection not available");
-      AndroidComponentUtil.toggleComponent(this, SyncOnConnectionAvailable.class, true);
+      AndroidComponentUtil.INSTANCE.toggleComponent(this, SyncOnConnectionAvailable.class, true);
       stopSelf(startId);
       return START_NOT_STICKY;
     }
@@ -77,9 +77,9 @@ public class SyncService extends Service {
 
     @Override public void onReceive(Context context, Intent intent) {
       if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION)
-          && NetworkUtil.isNetworkConnected(context)) {
+          && NetworkUtil.INSTANCE.isNetworkConnected(context)) {
         Timber.i("Connection is now available, triggering sync...");
-        AndroidComponentUtil.toggleComponent(context, this.getClass(), false);
+        AndroidComponentUtil.INSTANCE.toggleComponent(context, this.getClass(), false);
         context.startService(getStartIntent(context));
       }
     }

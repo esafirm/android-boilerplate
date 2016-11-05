@@ -44,11 +44,11 @@ public class DatabaseHelperTest {
     result.assertReceivedOnNext(ribots);
 
     Cursor cursor =
-        mDatabaseHelper.getBriteDb().query("SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME);
+        mDatabaseHelper.getBriteDb().query("SELECT * FROM " + Db.RibotProfileTable.INSTANCE.getTABLE_NAME());
     assertEquals(2, cursor.getCount());
     for (Ribot ribot : ribots) {
       cursor.moveToNext();
-      assertEquals(ribot.profile(), Db.RibotProfileTable.parseCursor(cursor));
+      assertEquals(ribot.profile(), Db.RibotProfileTable.INSTANCE.parseCursor(cursor));
     }
   }
 
