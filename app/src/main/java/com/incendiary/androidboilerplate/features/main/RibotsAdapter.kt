@@ -5,11 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.incendiary.androidboilerplate.R
 import com.incendiary.androidboilerplate.data.model.Ribot
+import kotlinx.android.synthetic.main.item_ribot.view.*
 import java.util.*
 import javax.inject.Inject
 
@@ -35,23 +33,14 @@ class RibotsAdapter
 		val ribot = mRibots!![position]
 		val name = ribot.profile.name
 
-		holder.hexColorView!!.setBackgroundColor(Color.parseColor(ribot.profile.hexColor))
-		holder.nameTextView!!.text = String.format("%s %s", name.first, name.last)
-		holder.emailTextView!!.text = ribot.profile.email
+		holder.itemView.view_hex_color.setBackgroundColor(Color.parseColor(ribot.profile.hexColor))
+		holder.itemView.text_name.text = String.format("%s %s", name.first, name.last)
+		holder.itemView.text_email.text = ribot.profile.email
 	}
 
 	override fun getItemCount(): Int {
 		return mRibots!!.size
 	}
 
-	inner class RibotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-		@BindView(R.id.view_hex_color) var hexColorView: View? = null
-		@BindView(R.id.text_name) var nameTextView: TextView? = null
-		@BindView(R.id.text_email) var emailTextView: TextView? = null
-
-		init {
-			ButterKnife.bind(this, itemView)
-		}
-	}
+	inner class RibotViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
