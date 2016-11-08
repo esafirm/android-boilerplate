@@ -4,6 +4,7 @@ import android.content.Context;
 import com.esafirm.androidboilerplate.BoilerplateApplication;
 import com.esafirm.androidboilerplate.data.DataManager;
 import com.esafirm.androidboilerplate.test.common.injection.component.TestComponent;
+import com.esafirm.androidboilerplate.test.common.injection.component.DaggerTestComponent;
 import com.esafirm.androidboilerplate.test.common.injection.module.ApplicationTestModule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

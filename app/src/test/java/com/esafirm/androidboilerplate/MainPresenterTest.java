@@ -51,7 +51,7 @@ import static org.mockito.Mockito.when;
   }
 
   @Test public void loadRibotsReturnsEmptyList() {
-    when(mMockDataManager.getRibots()).thenReturn(Observable.just(Collections.emptyList()));
+    when(mMockDataManager.getRibots()).thenReturn(Observable.just(Collections.<Ribot>emptyList()));
 
     mMainPresenter.loadRibots();
     verify(mMockMainMvpView).showRibotsEmpty();
@@ -60,7 +60,8 @@ import static org.mockito.Mockito.when;
   }
 
   @Test public void loadRibotsFails() {
-    when(mMockDataManager.getRibots()).thenReturn(Observable.error(new RuntimeException()));
+    when(mMockDataManager.getRibots()).thenReturn(
+        Observable.<List<Ribot>>error(new RuntimeException()));
 
     mMainPresenter.loadRibots();
     verify(mMockMainMvpView).showError();

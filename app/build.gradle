@@ -123,19 +123,21 @@ dependencies {
 
   /* RxJava */
   compile 'io.reactivex:rxandroid:1.2.1'
-  compile 'io.reactivex:rxjava:1.1.10'
+  compile 'io.reactivex:rxjava:1.2.1'
 
   /* Common & Utility */
   compile 'com.jakewharton.timber:timber:4.3.0'
   compile 'com.github.esafirm.androidcommon:app:0.4.0'
 
   /* Dagger */
-  final daggerVersion = '2.5'
+  final daggerVersion = '2.7'
   final daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
 
   compile "com.google.dagger:dagger:$daggerVersion"
   provided 'org.glassfish:javax.annotation:10.0-b28'
   kapt daggerCompiler
+  kaptTest daggerCompiler
+  kaptAndroidTest daggerCompiler
 
   /* --------------------------------------------------- */
   /* > Testing */
