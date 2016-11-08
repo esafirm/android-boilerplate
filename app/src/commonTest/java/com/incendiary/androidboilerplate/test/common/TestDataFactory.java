@@ -1,12 +1,12 @@
 package com.incendiary.androidboilerplate.test.common;
 
+import com.incendiary.androidboilerplate.data.model.Name;
+import com.incendiary.androidboilerplate.data.model.Profile;
+import com.incendiary.androidboilerplate.data.model.Ribot;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import com.incendiary.androidboilerplate.data.model.Name;
-import com.incendiary.androidboilerplate.data.model.Profile;
-import com.incendiary.androidboilerplate.data.model.Ribot;
 
 /**
  * Factory class that makes instances of data models with random field values.
@@ -19,7 +19,7 @@ public class TestDataFactory {
   }
 
   public static Ribot makeRibot(String uniqueSuffix) {
-    return Ribot.create(makeProfile(uniqueSuffix));
+    return new Ribot(makeProfile(uniqueSuffix));
   }
 
   public static List<Ribot> makeListRibots(int number) {
@@ -42,6 +42,6 @@ public class TestDataFactory {
   }
 
   public static Name makeName(String uniqueSuffix) {
-    return Name.create("Name-" + uniqueSuffix, "Surname-" + uniqueSuffix);
+    return new Name("Name-" + uniqueSuffix, "Surname-" + uniqueSuffix);
   }
 }

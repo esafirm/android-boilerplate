@@ -2,12 +2,12 @@ package com.incendiary.androidboilerplate.test.common.injection.module;
 
 import android.app.Application;
 import android.content.Context;
-import dagger.Module;
-import dagger.Provides;
-import javax.inject.Singleton;
 import com.incendiary.androidboilerplate.data.DataManager;
 import com.incendiary.androidboilerplate.data.remote.ApiService;
 import com.incendiary.androidboilerplate.di.ApplicationContext;
+import dagger.Module;
+import dagger.Provides;
+import javax.inject.Singleton;
 
 import static org.mockito.Mockito.mock;
 
@@ -31,7 +31,9 @@ import static org.mockito.Mockito.mock;
     return mApplication;
   }
 
-  /************* MOCKS *************/
+  /* --------------------------------------------------- */
+  /* > Mocks */
+  /* --------------------------------------------------- */
 
   @Provides @Singleton DataManager provideDataManager() {
     return mock(DataManager.class);

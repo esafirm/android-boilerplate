@@ -5,6 +5,10 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import com.incendiary.androidboilerplate.data.model.Ribot;
+import com.incendiary.androidboilerplate.features.main.MainActivity;
+import com.incendiary.androidboilerplate.test.common.TestComponentRule;
+import com.incendiary.androidboilerplate.test.common.TestDataFactory;
 import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
@@ -12,10 +16,6 @@ import org.junit.rules.RuleChain;
 import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 import rx.Observable;
-import com.incendiary.androidboilerplate.data.model.Ribot;
-import com.incendiary.androidboilerplate.test.common.TestComponentRule;
-import com.incendiary.androidboilerplate.test.common.TestDataFactory;
-import com.incendiary.androidboilerplate.features.main.MainActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -34,7 +34,8 @@ import static org.mockito.Mockito.when;
           // Override the default intent so we pass a false flag for syncing so it doesn't
           // start a sync service in the background that would affect  the behaviour of
           // this test.
-          return MainActivity.Companion.getStartIntent(InstrumentationRegistry.getTargetContext(), false);
+          return MainActivity.Companion.getStartIntent(InstrumentationRegistry.getTargetContext(),
+              false);
         }
       };
 
@@ -51,10 +52,10 @@ import static org.mockito.Mockito.when;
     int position = 0;
     for (Ribot ribot : testDataRibots) {
       onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(position));
-      String name =
-          String.format("%s %s", ribot.profile().name().first(), ribot.profile().name().last());
+      String name = String.format("%s %s", ribot.getProfile().getName().getFirst(),
+          ribot.getProfile().getName().getLast());
       onView(withText(name)).check(matches(isDisplayed()));
-      onView(withText(ribot.profile().email())).check(matches(isDisplayed()));
+      onView(withText(ribot.getProfile().getEmail())).check(matches(isDisplayed()));
       position++;
     }
   }
