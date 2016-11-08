@@ -6,14 +6,14 @@ import com.esafirm.androidboilerplate.data.local.Db;
 import com.esafirm.androidboilerplate.data.local.DbOpenHelper;
 import com.esafirm.androidboilerplate.data.model.Ribot;
 import com.esafirm.androidboilerplate.test.common.TestDataFactory;
-import com.esafirm.androidboilerplate.util.RxSchedulersOverrideRule;
 import com.esafirm.androidboilerplate.util.DefaultConfig;
+import com.esafirm.androidboilerplate.util.RxSchedulersOverrideRule;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import rx.observers.TestSubscriber;
@@ -23,7 +23,7 @@ import static junit.framework.Assert.assertEquals;
 /**
  * Unit tests integration with a SQLite Database using Robolectric
  */
-@RunWith(RobolectricGradleTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
 public class DatabaseHelperTest {
 
