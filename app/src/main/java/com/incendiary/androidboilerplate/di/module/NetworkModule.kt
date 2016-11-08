@@ -3,7 +3,6 @@ package com.incendiary.androidboilerplate.di.module
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.incendiary.androidboilerplate.data.remote.ApiService
-import com.ryanharter.auto.value.gson.AutoValueGsonTypeAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,7 +20,6 @@ import javax.inject.Singleton
 
 	@Singleton @Provides internal fun provideGson(): Gson {
 		return GsonBuilder()
-				.registerTypeAdapterFactory(AutoValueGsonTypeAdapterFactory())
 				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
 				.create()
 	}

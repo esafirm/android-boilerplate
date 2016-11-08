@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Inject constructor(private val mApiService: ApiService, private val databaseHelper: DatabaseHelper) {
 
 	fun syncRibots(): Observable<Ribot> {
-		return mApiService.ribots.concatMap { databaseHelper.setRibots(it) }
+		return mApiService.getRibots().concatMap { databaseHelper.setRibots(it) }
 	}
 
 	val ribots: Observable<List<Ribot>>

@@ -1,6 +1,13 @@
 package com.incendiary.androidboilerplate;
 
 import android.database.Cursor;
+import com.incendiary.androidboilerplate.data.local.DatabaseHelper;
+import com.incendiary.androidboilerplate.data.local.Db;
+import com.incendiary.androidboilerplate.data.local.DbOpenHelper;
+import com.incendiary.androidboilerplate.data.model.Ribot;
+import com.incendiary.androidboilerplate.test.common.TestDataFactory;
+import com.incendiary.androidboilerplate.util.DefaultConfig;
+import com.incendiary.androidboilerplate.util.RxSchedulersOverrideRule;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Rule;
@@ -10,13 +17,6 @@ import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import rx.observers.TestSubscriber;
-import com.incendiary.androidboilerplate.data.local.DatabaseHelper;
-import com.incendiary.androidboilerplate.data.local.Db;
-import com.incendiary.androidboilerplate.data.local.DbOpenHelper;
-import com.incendiary.androidboilerplate.data.model.Ribot;
-import com.incendiary.androidboilerplate.test.common.TestDataFactory;
-import com.incendiary.androidboilerplate.util.DefaultConfig;
-import com.incendiary.androidboilerplate.util.RxSchedulersOverrideRule;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -43,12 +43,13 @@ public class DatabaseHelperTest {
     result.assertNoErrors();
     result.assertReceivedOnNext(ribots);
 
-    Cursor cursor =
-        mDatabaseHelper.getBriteDb().query("SELECT * FROM " + Db.RibotProfileTable.INSTANCE.getTABLE_NAME());
+    Cursor cursor = mDatabaseHelper.getBriteDb()
+        .query("SELECT * FROM " + Db.RibotProfileTable.INSTANCE.getTABLE_NAME());
     assertEquals(2, cursor.getCount());
+
     for (Ribot ribot : ribots) {
       cursor.moveToNext();
-      assertEquals(ribot.profile(), Db.RibotProfileTable.INSTANCE.parseCursor(cursor));
+      assertEquals(ribot.getProfile(), Db.RibotProfileTable.INSTANCE.parseCursor(cursor));
     }
   }
 

@@ -11,6 +11,8 @@ object Preferences {
 	/* --------------------------------------------------- */
 
 	fun setup(application: Application) {
-		Hawk.init(application).setEncryption(NoEncryption()).build()
+		Hawk.init(application)
+				.setEncryption(NoEncryption())
+				.build()
 	}
 }

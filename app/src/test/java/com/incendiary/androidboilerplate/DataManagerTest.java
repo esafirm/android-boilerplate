@@ -1,5 +1,10 @@
 package com.incendiary.androidboilerplate;
 
+import com.incendiary.androidboilerplate.data.DataManager;
+import com.incendiary.androidboilerplate.data.local.DatabaseHelper;
+import com.incendiary.androidboilerplate.data.model.Ribot;
+import com.incendiary.androidboilerplate.data.remote.ApiService;
+import com.incendiary.androidboilerplate.test.common.TestDataFactory;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;
@@ -9,11 +14,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import rx.Observable;
 import rx.observers.TestSubscriber;
-import com.incendiary.androidboilerplate.data.DataManager;
-import com.incendiary.androidboilerplate.data.local.DatabaseHelper;
-import com.incendiary.androidboilerplate.data.model.Ribot;
-import com.incendiary.androidboilerplate.data.remote.ApiService;
-import com.incendiary.androidboilerplate.test.common.TestDataFactory;
 
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.never;

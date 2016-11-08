@@ -40,7 +40,9 @@ class MainActivity : BaseActivity(), MainMvpView {
 	}
 
 	override fun showError() {
-		DialogFactory.createGenericErrorDialog(this, getString(R.string.error_loading_ribots)).show()
+		DialogFactory
+				.createGenericErrorDialog(this, getString(R.string.error_loading_ribots))
+				.show()
 	}
 
 	override fun showRibotsEmpty() {

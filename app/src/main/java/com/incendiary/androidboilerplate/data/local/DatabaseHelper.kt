@@ -4,22 +4,18 @@ import android.database.sqlite.SQLiteDatabase
 import com.incendiary.androidboilerplate.data.model.Ribot
 import com.squareup.sqlbrite.BriteDatabase
 import com.squareup.sqlbrite.SqlBrite
+import rx.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
-import rx.Observable
-import rx.Subscriber
 
 @Singleton class DatabaseHelper
 @Inject constructor(dbOpenHelper: DbOpenHelper) {
 
 	val briteDb: BriteDatabase
-
-	init {
-		briteDb = SqlBrite.create().wrapDatabaseHelper(dbOpenHelper)
-	}
+			by lazy { SqlBrite.create().wrapDatabaseHelper(dbOpenHelper) }
 
 	fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> {
-		return Observable.create(Observable.OnSubscribe<com.incendiary.androidboilerplate.data.model.Ribot> { subscriber ->
+		return Observable.create(Observable.OnSubscribe<Ribot> { subscriber ->
 			if (subscriber.isUnsubscribed) return@OnSubscribe
 			val transaction = briteDb.newTransaction()
 

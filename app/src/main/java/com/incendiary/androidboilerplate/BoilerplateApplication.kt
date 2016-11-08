@@ -38,7 +38,7 @@ class BoilerplateApplication : Application() {
 	}
 
 	// Needed to replace the component with a test specific one
-	private var component: ApplicationComponent
+	var component: ApplicationComponent
 		get() {
 			mApplicationComponent?.apply { return mApplicationComponent!! }
 			mApplicationComponent = DaggerApplicationComponent.builder()

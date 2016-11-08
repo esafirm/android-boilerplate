@@ -18,7 +18,8 @@ import javax.inject.Inject
 
 class SyncService : Service() {
 
-	@Inject internal var mDataManager: DataManager? = null
+	@Inject lateinit var mDataManager: DataManager
+
 	private var mSubscription: Subscription? = null
 
 	override fun onCreate() {

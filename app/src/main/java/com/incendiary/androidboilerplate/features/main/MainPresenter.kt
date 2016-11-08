@@ -11,6 +11,7 @@ import javax.inject.Inject
 
 @ConfigPersistent class MainPresenter
 @Inject constructor(private val mDataManager: DataManager) : BasePresenter<MainMvpView>() {
+
 	private var mSubscription: Subscription? = null
 
 	override fun attachView(mvpView: MainMvpView) {
@@ -32,12 +33,12 @@ import javax.inject.Inject
 				.subscribe(
 						{
 							if (it.isEmpty()) {
-								mvpView.showRibotsEmpty()
+								mvpView?.showRibotsEmpty()
 							} else {
-								mvpView.showRibots(it)
+								mvpView?.showRibots(it)
 							}
 						},
-						{ mvpView.showError() }
+						{ mvpView?.showError() }
 				)
 	}
 }

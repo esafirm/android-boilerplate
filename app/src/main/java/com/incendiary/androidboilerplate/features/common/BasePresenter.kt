@@ -25,6 +25,7 @@ open class BasePresenter<T : MvpView> : Presenter<T> {
 		if (!isViewAttached) throw MvpViewNotAttachedException()
 	}
 
-	class MvpViewNotAttachedException : RuntimeException("Please call Presenter.attachView(MvpView) before" + " requesting data to the Presenter")
+	class MvpViewNotAttachedException :
+			RuntimeException("Please call Presenter.attachView(MvpView) before" + " requesting data to the Presenter")
 }
 

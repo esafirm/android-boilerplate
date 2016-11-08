@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.triplet.play'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'io.fabric' TODO uncomment after Fabric integration
+
 apply from: '../config/quality/quality.gradle'
 apply from: 'versioning.gradle'
-//TODO uncomment line below after adding fabric api secret and key to fabric.properties
-//apply plugin: 'io.fabric'
 
 android {
   compileSdkVersion 25
@@ -78,6 +78,10 @@ android {
   }
 }
 
+kapt {
+  generateStubs = true
+}
+
 play {
   serviceAccountEmail = 'your-service-account-email'
   pk12File = file('key.p12')
@@ -137,14 +141,7 @@ dependencies {
 
   compile "com.google.dagger:dagger:$daggerVersion"
   provided 'org.glassfish:javax.annotation:10.0-b28'
-  apt daggerCompiler
-  testApt daggerCompiler
-  androidTestApt daggerCompiler
-
-  /* Views Binder */
-  final butterknife_version = '8.1.0'
-  compile "com.jakewharton:butterknife:$butterknife_version"
-  apt "com.jakewharton:butterknife-compiler:$butterknife_version"
+  kapt daggerCompiler
 
   /* --------------------------------------------------- */
   /* > Testing */
