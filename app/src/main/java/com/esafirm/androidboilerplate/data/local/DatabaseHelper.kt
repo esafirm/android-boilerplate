@@ -4,6 +4,7 @@ import android.database.sqlite.SQLiteDatabase
 import com.esafirm.androidboilerplate.data.model.Ribot
 import com.squareup.sqlbrite.BriteDatabase
 import com.squareup.sqlbrite.SqlBrite
+import rx.Emitter
 import rx.Observable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,27 +15,29 @@ import javax.inject.Singleton
 	val briteDb: BriteDatabase
 			by lazy { SqlBrite.create().wrapDatabaseHelper(dbOpenHelper) }
 
-	fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> {
-		return Observable.create(Observable.OnSubscribe<Ribot> { subscriber ->
-			if (subscriber.isUnsubscribed) return@OnSubscribe
-			val transaction = briteDb.newTransaction()
+	fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> =
+			Observable.fromEmitter({
+				val transaction = briteDb.newTransaction()
 
-			try {
-				briteDb.delete(Db.RibotProfileTable.TABLE_NAME, null)
-				for (ribot in newRibots) {
-					val result = briteDb.insert(Db.RibotProfileTable.TABLE_NAME,
-							Db.RibotProfileTable.toContentValues(ribot.profile),
-							SQLiteDatabase.CONFLICT_REPLACE)
-					if (result >= 0) subscriber.onNext(ribot)
+				try {
+					briteDb.delete(Db.RibotProfileTable.TABLE_NAME, null)
+
+					newRibots.forEach { item ->
+						val result = briteDb.insert(Db.RibotProfileTable.TABLE_NAME,
+								Db.RibotProfileTable.toContentValues(item.profile),
+								SQLiteDatabase.CONFLICT_REPLACE)
+
+						if (result >= 0) {
+							it.onNext(item)
+						}
+					}
+
+					transaction.markSuccessful()
+					it.onCompleted()
+				} finally {
+					transaction.end()
 				}
-
-				transaction.markSuccessful()
-				subscriber.onCompleted()
-			} finally {
-				transaction.end()
-			}
-		})
-	}
+			}, Emitter.BackpressureMode.BUFFER)
 
 	val ribots: Observable<List<Ribot>>
 		get() = briteDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
