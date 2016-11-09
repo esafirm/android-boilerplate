@@ -44,7 +44,7 @@ import static org.mockito.Mockito.when;
   @Rule public final TestRule chain = RuleChain.outerRule(component).around(main);
 
   @Test public void listOfRibotsShows() {
-    List<Ribot> testDataRibots = TestDataFactory.makeListRibots(20);
+    List<Ribot> testDataRibots = TestDataFactory.INSTANCE.makeListRibots(20);
     when(component.getMockDataManager().getRibots()).thenReturn(Observable.just(testDataRibots));
 
     main.launchActivity(null);

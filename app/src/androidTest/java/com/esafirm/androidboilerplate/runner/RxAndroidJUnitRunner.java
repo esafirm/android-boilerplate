@@ -2,9 +2,9 @@ package com.esafirm.androidboilerplate.runner;
 
 import android.os.Bundle;
 import android.support.test.espresso.Espresso;
-import rx.plugins.RxJavaPlugins;
 import com.esafirm.androidboilerplate.util.RxIdlingExecutionHook;
 import com.esafirm.androidboilerplate.util.RxIdlingResource;
+import rx.plugins.RxJavaPlugins;
 
 /**
  * Runner that registers a Espresso Indling resource that handles waiting for

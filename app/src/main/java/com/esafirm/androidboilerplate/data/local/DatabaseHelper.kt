@@ -10,12 +10,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton class DatabaseHelper
-@Inject constructor(dbOpenHelper: DbOpenHelper) {
+@Inject constructor(dbOpenHelper: DbOpenHelper) : Database {
 
 	val briteDb: BriteDatabase
 			by lazy { SqlBrite.create().wrapDatabaseHelper(dbOpenHelper) }
 
-	fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> =
+	override fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> =
 			Observable.fromEmitter({
 				val transaction = briteDb.newTransaction()
 
@@ -39,7 +39,9 @@ import javax.inject.Singleton
 				}
 			}, Emitter.BackpressureMode.BUFFER)
 
-	val ribots: Observable<List<Ribot>>
-		get() = briteDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
-				"SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME).mapToList { cursor -> Ribot(Db.RibotProfileTable.parseCursor(cursor)) }
+	override fun getRibots(): Observable<List<Ribot>> {
+		return briteDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
+				"SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME)
+				.mapToList { cursor -> Ribot(Db.RibotProfileTable.parseCursor(cursor)) }
+	}
 }

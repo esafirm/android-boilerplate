@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 	override fun detachView() {
 		super.detachView()
-		if (mSubscription != null) mSubscription!!.unsubscribe()
+		mSubscription.safeUnsubscribe()
 	}
 
 	fun loadRibots() {
