@@ -115,7 +115,7 @@ dependencies {
   compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
   compile 'com.orhanobut:hawk:2.0.1'
-  compile 'com.squareup.sqlbrite:sqlbrite:0.5.0'
+  compile 'com.squareup.sqlbrite:sqlbrite:0.8.0'
   compile 'com.github.bumptech.glide:glide:3.7.0'
   compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
     transitive = true;
