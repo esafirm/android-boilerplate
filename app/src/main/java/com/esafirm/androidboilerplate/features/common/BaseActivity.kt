@@ -34,8 +34,7 @@ open class BaseActivity : AppCompatActivity() {
 
 		// Create the ActivityComponent and reuses cached ConfigPersistentComponent if this is
 		// being called after a configuration change.
-		activityId = if (savedInstanceState != null) savedInstanceState.getLong(KEY_ACTIVITY_ID)
-		else NEXT_ID.andIncrement
+		activityId = savedInstanceState?.getLong(KEY_ACTIVITY_ID) ?: NEXT_ID.andIncrement
 	}
 
 	private val configPersistentComponent: ConfigPersistentComponent

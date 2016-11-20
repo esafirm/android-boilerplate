@@ -6,6 +6,7 @@ import com.squareup.sqlbrite.BriteDatabase
 import com.squareup.sqlbrite.SqlBrite
 import rx.Emitter
 import rx.Observable
+import rx.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +14,11 @@ import javax.inject.Singleton
 @Inject constructor(dbOpenHelper: DbOpenHelper) : Database {
 
 	val briteDb: BriteDatabase
-			by lazy { SqlBrite.create().wrapDatabaseHelper(dbOpenHelper) }
+			by lazy {
+				SqlBrite.Builder()
+						.build()
+						.wrapDatabaseHelper(dbOpenHelper, Schedulers.io())
+			}
 
 	override fun setRibots(newRibots: Collection<Ribot>): Observable<Ribot> =
 			Observable.fromEmitter({

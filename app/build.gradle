@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.github.triplet.play'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 //apply plugin: 'io.fabric' TODO uncomment after Fabric integration
 
 apply from: '../config/quality/quality.gradle'
@@ -70,10 +71,6 @@ android {
   lintOptions {
     warning 'InvalidPackage'
   }
-}
-
-kapt {
-  generateStubs = true
 }
 
 play {
