@@ -24,7 +24,7 @@ abstract class AbsController : RxController {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         onSetupComponent()
-        val view = inflater.inflate(layoutResId, container, false)
+        val view = inflater.inflate(getLayoutResId(), container, false)
         onViewBound(view)
         return view
     }
@@ -37,8 +37,7 @@ abstract class AbsController : RxController {
         //to be overridden
     }
 
-    protected abstract val layoutResId: Int
-
+    protected abstract fun getLayoutResId(): Int
     protected abstract fun onViewBound(view: View)
 
     /* --------------------------------------------------- */

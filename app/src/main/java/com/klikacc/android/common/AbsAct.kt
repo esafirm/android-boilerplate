@@ -9,12 +9,12 @@ import com.klikacc.android.di.components.ActivityComponent
 abstract class AbsAct : AppCompatActivity(), Setup {
 
     val component: ActivityComponent by lazy {
-        ActivityComponent.Initializer.make(KlikApp.component(), this, mainRouter, overlayRouter)
+        ActivityComponent.Initializer.make(KlikApp.component(), this, getMainRouter(), getOverlayRouter())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId)
+        setContentView(getLayoutResId())
         onViewCreated(savedInstanceState)
     }
 
@@ -30,5 +30,5 @@ abstract class AbsAct : AppCompatActivity(), Setup {
     /* > Abstract Layout */
     /* --------------------------------------------------- */
 
-    protected abstract val layoutResId: Int
+    protected abstract fun getLayoutResId(): Int
 }

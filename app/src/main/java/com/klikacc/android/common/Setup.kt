@@ -6,6 +6,6 @@ import com.bluelinelabs.conductor.Router
 
 interface Setup {
     fun onViewCreated(savedInstanceState: Bundle?)
-    val mainRouter: Router
-    val overlayRouter: Router
+    fun getMainRouter(): Router?
+    fun getOverlayRouter(): Router?
 }
