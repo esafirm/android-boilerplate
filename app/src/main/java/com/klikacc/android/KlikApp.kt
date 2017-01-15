@@ -9,16 +9,10 @@ import timber.log.Timber
 class KlikApp : Application() {
 
     companion object {
-
         lateinit var appComponent: AppComponent
 
-        fun appContext(): Context {
-            return appComponent.context()
-        }
-
-        fun component(): AppComponent {
-            return appComponent
-        }
+        fun appContext(): Context = appComponent.context()
+        fun component(): AppComponent = appComponent
     }
 
     override fun onCreate() {
